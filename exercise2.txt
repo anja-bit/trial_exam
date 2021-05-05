@@ -1,0 +1,20 @@
+UNF: practice(staffNo,dentistName,patientNo,patientName,[(Date,Time)],surgeryNo)
+
+1NF: remove repeating groups and determine PK:
+
+appointment(*staffNo*,*patientNo*,*apptDate*,apptTime,surgeryNo)
+practice(*staffNo*,dentistName,*patientNo*,patientName)
+
+2NF: remove partial dependencies:
+
+dentist(*staffNo*,dentistName)
+patient(*patientNo*,patientName)
+appointment(*staffNo*,*patientNo*,*apptDate*,apptTime,surgeryNo)
+
+3NF: every non-key att not dependent on another non-key att:
+
+dentist(*staffNo*,dentistName)
+patient(*patientNo*,patientName)
+appointment(*staffNo*,*patientNo*,*apptDate*,apptTime,surgeryNo)
+
+2NF=3NF
