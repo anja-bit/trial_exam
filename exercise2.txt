@@ -1,20 +1,22 @@
-UNF: practice(staffNo,dentistName,patientNo,patientName,[(Date,Time)],surgeryNo)
+UNF: practice(staffNo,dentistName,patientNo,patientName,appointment,surgeryNo)
 
-1NF: remove repeating groups and determine PK:
+1NF: all key information (add date and time), remove repeating groups (none), define PK:
 
-appointment(*staffNo*,*patientNo*,*apptDate*,apptTime,surgeryNo)
-practice(*staffNo*,dentistName,*patientNo*,patientName)
+DB(*staffNo*,dentistName,patientNo,patientName,*apptDate*,*apptTime*,surgeryNo)
 
-2NF: remove partial dependencies:
+2NE:remove partial dependencies:
 
 dentist(*staffNo*,dentistName)
-patient(*patientNo*,patientName)
-appointment(*staffNo*,*patientNo*,*apptDate*,apptTime,surgeryNo)
+DB(*staffNo*,*apptDate*,*apptTime*,patientNo,patientName,surgeryNo)
 
 3NF: every non-key att not dependent on another non-key att:
+patient depends on patientNo:
 
 dentist(*staffNo*,dentistName)
 patient(*patientNo*,patientName)
-appointment(*staffNo*,*patientNo*,*apptDate*,apptTime,surgeryNo)
+appointment(*staffNo*,*apptDate*,*apptTime*,patientNo,surgeryNo)
 
-2NF=3NF
+BCNF: every determinant is a candidate key
+
+no violations: BCNF=3NF
+
